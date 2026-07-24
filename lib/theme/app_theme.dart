@@ -87,7 +87,8 @@ class AppTheme {
         foregroundColor: onColor,
         elevation: 0,
         centerTitle: false,
-        titleTextStyle: AppTypography.headlineSm.copyWith(color: onColor),
+        titleTextStyle:
+            AppTypography.headlineMd.copyWith(fontSize: 24, color: onColor),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(

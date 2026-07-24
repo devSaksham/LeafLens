@@ -33,9 +33,11 @@ from a single edit, and nothing drifts off-palette.
 grep -rn "Color(0x" lib --include="*.dart" | grep -v app_colors.dart
 # 2. No Material palette usage (whole-word "Colors" won't match "AppColors")
 grep -rnw "Colors" lib --include="*.dart" | grep -v app_colors.dart
+# 3. No Material/Cupertino icons — Feather icons only (see section 9)
+grep -rnwE "Icons|CupertinoIcons" lib --include="*.dart"
 ```
 
-Both must print nothing. Any output is a violation to fix before merging.
+All three must print nothing. Any output is a violation to fix before merging.
 
 ---
 
@@ -216,6 +218,7 @@ Re-run the guard in section 0 after any UI change.
 - Keep labels, nav, and buttons uppercase with the label tracking.
 - Use the hard 4px offset shadow when an element should lift.
 - Read colors/type from `Theme.of(context)` so dark mode just works.
+- Use Feather icons only (see section 9).
 
 **Don't**
 - Don't write any color literal outside `app_colors.dart`.
@@ -223,3 +226,30 @@ Re-run the guard in section 0 after any UI change.
 - Don't use gradients, glassmorphism, or blurred shadows.
 - Don't over-tighten layouts or remove whitespace.
 - Don't add font families beyond Fraunces / Inter.
+- Don't use Material (`Icons.*`) or Cupertino (`CupertinoIcons.*`) icons.
+
+---
+
+## 9. Icons
+
+**Use Feather icons exclusively.** They are the single icon set for LeafLens —
+thin, consistent line icons that match the editorial, low-density feel. Never use
+Material `Icons.*` or `CupertinoIcons.*`.
+
+- Package: [`feather_icons`](https://pub.dev/packages/feather_icons).
+- Reference as `FeatherIcons.<name>` (camelCase of the Feather name, e.g.
+  `message-circle` → `FeatherIcons.messageCircle`).
+- Color and size come from context, never a literal: `Icon(FeatherIcons.camera,
+  color: Theme.of(context).colorScheme.onSurface)`.
+
+```dart
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+
+Icon(FeatherIcons.camera);        // scan / capture
+Icon(FeatherIcons.image);         // gallery / placeholder
+Icon(FeatherIcons.messageCircle); // assistant
+Icon(FeatherIcons.send);          // send message
+```
+
+The guard in section 0 (`grep -rn "Icons\.\|CupertinoIcons\." lib`) enforces this
+— it must print nothing.
