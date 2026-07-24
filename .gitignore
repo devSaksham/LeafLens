@@ -42,7 +42,8 @@ migrate_working_dir/
 /build/app/outputs/*
 !/build/app/outputs/flutter-apk/
 /build/app/outputs/flutter-apk/*
-!/build/app/outputs/flutter-apk/app-debug.apk
+# Only the release APKs are committable (the debug APK exceeds GitHub's 100MB limit).
+!/build/app/outputs/flutter-apk/*-release.apk
 
 # Symbolication related
 app.*.symbols
