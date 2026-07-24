@@ -33,17 +33,8 @@ migrate_working_dir/
 /build/
 /coverage/
 
-# Keep /build/ ignored but allow the built APK to be committed.
-!/build/
-/build/*
-!/build/app/
-/build/app/*
-!/build/app/outputs/
-/build/app/outputs/*
-!/build/app/outputs/flutter-apk/
-/build/app/outputs/flutter-apk/*
-# Only the release APKs are committable (the debug APK exceeds GitHub's 100MB limit).
-!/build/app/outputs/flutter-apk/*-release.apk
+# Secrets: never commit API keys (this file holds the Gemini keys)
+lib/config/gemini_config.dart
 
 # Symbolication related
 app.*.symbols
