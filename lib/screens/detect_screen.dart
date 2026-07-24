@@ -1,13 +1,17 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import '../theme/feather_icons.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../l10n/app_localizations.dart';
 import '../ml/diagnosis.dart';
 import '../ml/plant_disease_classifier.dart';
+import '../sessions/session_store.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_theme.dart';
 import 'assistant_screen.dart';
+import 'treatment_screen.dart';
 
 class DetectScreen extends StatefulWidget {
   const DetectScreen({super.key});
@@ -23,7 +27,7 @@ class _DetectScreenState extends State<DetectScreen> {
   Diagnosis? _result;
   bool _analyzing = false;
   bool _hasRun = false;
-  String? _error;
+  bool _failed = false;
 
   Future<void> _pick(ImageSource source) async {
     try {
@@ -35,10 +39,13 @@ class _DetectScreenState extends State<DetectScreen> {
         _result = null;
         _hasRun = false;
         _analyzing = true;
-        _error = null;
+        _failed = false;
       });
       final Diagnosis? diagnosis =
           await PlantDiseaseClassifier.instance.classify(bytes);
+      if (diagnosis != null && !diagnosis.isBackground) {
+        await SessionStore.instance.add(imageBytes: bytes, diagnosis: diagnosis);
+      }
       if (!mounted) return;
       setState(() {
         _result = diagnosis;
@@ -50,7 +57,7 @@ class _DetectScreenState extends State<DetectScreen> {
       setState(() {
         _analyzing = false;
         _hasRun = true;
-        _error = 'Could not analyze this image.';
+        _failed = true;
       });
     }
   }
@@ -58,17 +65,15 @@ class _DetectScreenState extends State<DetectScreen> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    final AppLocalizations l10n = AppLocalizations.of(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Detect')),
+      appBar: AppBar(title: Text(l10n.detectTitle)),
       body: ListView(
         padding: const EdgeInsets.all(AppSpacing.gutter),
         children: [
-          Text('Scan a leaf', style: theme.textTheme.displaySmall),
+          Text(l10n.scanLeaf, style: theme.textTheme.displaySmall),
           const SizedBox(height: AppSpacing.xs),
-          Text(
-            'Point at a single leaf in good light for the best result.',
-            style: theme.textTheme.bodyMedium,
-          ),
+          Text(l10n.detectSubtitle, style: theme.textTheme.bodyMedium),
           const SizedBox(height: AppSpacing.lg),
           _ImageFrame(bytes: _imageBytes, analyzing: _analyzing),
           const SizedBox(height: AppSpacing.lg),
@@ -77,7 +82,7 @@ class _DetectScreenState extends State<DetectScreen> {
               Expanded(
                 child: ElevatedButton(
                   onPressed: _analyzing ? null : () => _pick(ImageSource.camera),
-                  child: Text('CAMERA'),
+                  child: Text(l10n.camera),
                 ),
               ),
               const SizedBox(width: AppSpacing.sm),
@@ -85,14 +90,14 @@ class _DetectScreenState extends State<DetectScreen> {
                 child: OutlinedButton(
                   onPressed:
                       _analyzing ? null : () => _pick(ImageSource.gallery),
-                  child: Text('GALLERY'),
+                  child: Text(l10n.gallery),
                 ),
               ),
             ],
           ),
           const SizedBox(height: AppSpacing.lg),
-          if (_error != null)
-            Text(_error!, style: theme.textTheme.bodyMedium)
+          if (_failed)
+            Text(l10n.analyzeError, style: theme.textTheme.bodyMedium)
           else if (_hasRun)
             _ResultCard(result: _result),
         ],
@@ -120,11 +125,13 @@ class _ImageFrame extends StatelessWidget {
         ),
         clipBehavior: Clip.antiAlias,
         child: analyzing
-            ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
+            ? Center(
+                child: CircularProgressIndicator(
+                    color: theme.colorScheme.primary))
             : bytes == null
                 ? Center(
                     child: Icon(
-                      Icons.image_outlined,
+                      FeatherIcons.image,
                       size: 64,
                       color: theme.colorScheme.secondary,
                     ),
@@ -143,12 +150,13 @@ class _ResultCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    final AppLocalizations l10n = AppLocalizations.of(context);
 
     if (result == null || result!.isBackground) {
       return _shell(
         theme,
-        title: 'No plant detected',
-        body: 'Try again with a clearer photo of a single leaf.',
+        title: l10n.noPlantDetected,
+        body: l10n.noPlantBody,
       );
     }
 
@@ -159,18 +167,18 @@ class _ResultCard extends StatelessWidget {
     return _shell(
       theme,
       title: r.displayName,
-      body: r.isHealthy
-          ? 'This plant looks healthy.'
-          : 'A disease was detected. Ask the assistant for treatment tips.',
+      body: r.isHealthy ? l10n.healthyMessage : l10n.diseaseMessage,
       accent: statusColor,
       trailing: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Chip(label: Text(r.isHealthy ? 'HEALTHY' : 'DISEASE')),
+              Chip(
+                label: Text(r.isHealthy ? l10n.healthyChip : l10n.diseaseChip),
+              ),
               const SizedBox(width: AppSpacing.sm),
-              Text('Confidence ${r.confidenceLabel}',
+              Text(l10n.confidence(r.confidenceLabel),
                   style: theme.textTheme.labelLarge),
             ],
           ),
@@ -179,10 +187,22 @@ class _ResultCard extends StatelessWidget {
             ElevatedButton(
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(
+                  builder: (_) => TreatmentScreen(
+                    rawLabel: r.rawLabel,
+                    displayName: r.displayName,
+                  ),
+                ),
+              ),
+              child: Text(l10n.viewTreatment),
+            ),
+            const SizedBox(height: AppSpacing.sm),
+            OutlinedButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
                   builder: (_) => AssistantScreen(disease: r.displayName),
                 ),
               ),
-              child: Text('ASK ASSISTANT'),
+              child: Text(l10n.askAssistant),
             ),
           ],
         ],
