@@ -33,6 +33,17 @@ migrate_working_dir/
 /build/
 /coverage/
 
+# Keep /build/ ignored but allow the built APK to be committed.
+!/build/
+/build/*
+!/build/app/
+/build/app/*
+!/build/app/outputs/
+/build/app/outputs/*
+!/build/app/outputs/flutter-apk/
+/build/app/outputs/flutter-apk/*
+!/build/app/outputs/flutter-apk/app-debug.apk
+
 # Symbolication related
 app.*.symbols
 
