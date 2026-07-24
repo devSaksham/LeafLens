@@ -66,5 +66,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>LeafLens uses your location to give plant-care advice suited to your region.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>LeafLens uses the camera to photograph leaves for disease detection.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>LeafLens needs photo access to analyze pictures of your plants.</string>
 </dict>
 </plist>
