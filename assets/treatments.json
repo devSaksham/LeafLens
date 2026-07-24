@@ -1,0 +1,344 @@
+{
+  "apple apple scab": {
+    "cause": "fungal",
+    "severity": "act_soon",
+    "summary": "Venturia inaequalis fungus causing olive-green to brown velvety spots on leaves and fruit.",
+    "do_now": ["Remove and bin fallen and infected leaves", "Avoid wetting the foliage when watering"],
+    "organic": ["Sulfur or copper fungicide at bud break", "Spray neem oil every 7-10 days"],
+    "chemical": ["Captan or myclobutanil per label", "Repeat during wet spring weather"],
+    "prevent": ["Rake and destroy fallen leaves in autumn", "Prune for airflow", "Plant scab-resistant varieties"]
+  },
+  "apple black rot": {
+    "cause": "fungal",
+    "severity": "act_soon",
+    "summary": "Botryosphaeria fungus causing frog-eye leaf spots, cankers, and rotting fruit.",
+    "do_now": ["Cut out cankered branches well below the lesion", "Remove mummified fruit from the tree"],
+    "organic": ["Copper fungicide during the season", "Sanitize pruning tools between cuts"],
+    "chemical": ["Captan or thiophanate-methyl per label"],
+    "prevent": ["Prune out deadwood yearly", "Remove nearby wild or neglected apples", "Keep trees vigorous"]
+  },
+  "apple cedar apple rust": {
+    "cause": "fungal",
+    "severity": "monitor",
+    "summary": "Gymnosporangium rust needing both apple and juniper hosts; bright orange leaf spots.",
+    "do_now": ["Remove nearby juniper galls if possible", "Pick off heavily spotted leaves"],
+    "organic": ["Sulfur spray from pink bud through early summer", "Neem oil on new growth"],
+    "chemical": ["Myclobutanil at bud break, repeat per label"],
+    "prevent": ["Plant rust-resistant apple cultivars", "Keep junipers 100m+ away", "Improve airflow"]
+  },
+  "apple healthy": {
+    "cause": "none",
+    "severity": "healthy",
+    "summary": "This apple foliage looks healthy.",
+    "do_now": [],
+    "organic": [],
+    "chemical": [],
+    "prevent": ["Water at the base, not the leaves", "Prune yearly for airflow", "Rake fallen leaves in autumn"]
+  },
+  "blueberry healthy": {
+    "cause": "none",
+    "severity": "healthy",
+    "summary": "This blueberry foliage looks healthy.",
+    "do_now": [],
+    "organic": [],
+    "chemical": [],
+    "prevent": ["Keep soil acidic (pH 4.5-5.5)", "Mulch to retain moisture", "Prune old canes each winter"]
+  },
+  "cherry including sour powdery mildew": {
+    "cause": "fungal",
+    "severity": "act_soon",
+    "summary": "White powdery fungal growth on leaves and shoots, common in warm, humid conditions.",
+    "do_now": ["Remove and bin the worst affected leaves", "Increase airflow around the canopy"],
+    "organic": ["Potassium bicarbonate or sulfur spray", "Neem oil weekly on new growth"],
+    "chemical": ["Myclobutanil or trifloxystrobin per label"],
+    "prevent": ["Prune for open canopy", "Avoid excess nitrogen", "Water early in the day"]
+  },
+  "cherry including sour healthy": {
+    "cause": "none",
+    "severity": "healthy",
+    "summary": "This cherry foliage looks healthy.",
+    "do_now": [],
+    "organic": [],
+    "chemical": [],
+    "prevent": ["Prune for airflow", "Avoid overhead watering", "Clear fallen debris"]
+  },
+  "corn maize cercospora leaf spot gray leaf spot": {
+    "cause": "fungal",
+    "severity": "act_soon",
+    "summary": "Cercospora fungus causing long rectangular gray-to-tan lesions between leaf veins.",
+    "do_now": ["Remove severely infected lower leaves", "Avoid working in the field when wet"],
+    "organic": ["Copper-based fungicide early", "Improve spacing for airflow"],
+    "chemical": ["Strobilurin or triazole fungicide at first sign"],
+    "prevent": ["Rotate away from corn 1-2 years", "Bury crop residue", "Plant resistant hybrids"]
+  },
+  "corn maize common rust": {
+    "cause": "fungal",
+    "severity": "monitor",
+    "summary": "Puccinia sorghi causing small cinnamon-brown pustules on both leaf surfaces.",
+    "do_now": ["Scout regularly and note spread", "Remove volunteer corn nearby"],
+    "organic": ["Sulfur or copper fungicide if severe"],
+    "chemical": ["Triazole fungicide if infection is early and heavy"],
+    "prevent": ["Plant resistant hybrids", "Avoid late plantings", "Ensure balanced nutrition"]
+  },
+  "corn maize northern leaf blight": {
+    "cause": "fungal",
+    "severity": "act_soon",
+    "summary": "Exserohilum turcicum causing long cigar-shaped gray-green lesions on leaves.",
+    "do_now": ["Scout and mark spread", "Avoid overhead irrigation"],
+    "organic": ["Copper fungicide early in the season"],
+    "chemical": ["Strobilurin or triazole fungicide around tasseling"],
+    "prevent": ["Rotate crops", "Till under residue", "Choose resistant hybrids"]
+  },
+  "corn maize healthy": {
+    "cause": "none",
+    "severity": "healthy",
+    "summary": "This corn foliage looks healthy.",
+    "do_now": [],
+    "organic": [],
+    "chemical": [],
+    "prevent": ["Rotate crops yearly", "Maintain balanced fertility", "Scout weekly in humid weather"]
+  },
+  "grape black rot": {
+    "cause": "fungal",
+    "severity": "urgent",
+    "summary": "Guignardia bidwellii causing tan leaf spots and shriveled black 'mummy' berries.",
+    "do_now": ["Remove all mummified berries and infected leaves", "Bin, do not compost, the debris"],
+    "organic": ["Copper or sulfur from bud break", "Neem oil on new shoots"],
+    "chemical": ["Myclobutanil or mancozeb from early shoot growth"],
+    "prevent": ["Prune for airflow", "Remove mummies in winter", "Keep canopy dry"]
+  },
+  "grape esca black measles": {
+    "cause": "fungal",
+    "severity": "urgent",
+    "summary": "A trunk-disease complex causing tiger-stripe leaves and spotted berries; often fatal to vines.",
+    "do_now": ["Mark affected vines", "Prune out dead spurs and cordons in dry weather"],
+    "organic": ["Protect large pruning wounds with paste", "Remove and burn dead wood"],
+    "chemical": ["No reliable cure; manage by removing infected wood"],
+    "prevent": ["Prune late in dry weather", "Seal large wounds", "Avoid vine stress and overwatering"]
+  },
+  "grape leaf blight isariopsis leaf spot": {
+    "cause": "fungal",
+    "severity": "monitor",
+    "summary": "Pseudocercospora causing dark angular leaf spots, mostly late season.",
+    "do_now": ["Remove heavily spotted leaves", "Improve canopy airflow"],
+    "organic": ["Copper fungicide", "Neem oil on new growth"],
+    "chemical": ["Mancozeb or a strobilurin per label"],
+    "prevent": ["Prune and trellis for airflow", "Clear fallen leaves", "Avoid overhead watering"]
+  },
+  "grape healthy": {
+    "cause": "none",
+    "severity": "healthy",
+    "summary": "This grape foliage looks healthy.",
+    "do_now": [],
+    "organic": [],
+    "chemical": [],
+    "prevent": ["Prune and trellis for airflow", "Keep the canopy dry", "Remove fallen debris"]
+  },
+  "orange haunglongbing citrus greening": {
+    "cause": "bacterial",
+    "severity": "urgent",
+    "summary": "HLB, spread by the citrus psyllid, causing blotchy mottled leaves and bitter lopsided fruit. No cure.",
+    "do_now": ["Isolate and consider removing infected trees to protect others", "Control psyllids promptly"],
+    "organic": ["Neem or horticultural oil for psyllid control", "Reflective mulch to deter psyllids"],
+    "chemical": ["Approved insecticides for psyllid management per local guidance"],
+    "prevent": ["Plant certified disease-free stock", "Monitor for psyllids", "Report to local agriculture authority"]
+  },
+  "peach bacterial spot": {
+    "cause": "bacterial",
+    "severity": "act_soon",
+    "summary": "Xanthomonas causing angular purple-brown leaf spots that drop out, plus fruit cracking.",
+    "do_now": ["Remove severely spotted leaves and fruit", "Avoid overhead watering"],
+    "organic": ["Copper sprays at low rates (watch for phytotoxicity)"],
+    "chemical": ["Oxytetracycline or copper per label during the season"],
+    "prevent": ["Plant resistant varieties", "Prune for airflow", "Avoid high-nitrogen flushes"]
+  },
+  "peach healthy": {
+    "cause": "none",
+    "severity": "healthy",
+    "summary": "This peach foliage looks healthy.",
+    "do_now": [],
+    "organic": [],
+    "chemical": [],
+    "prevent": ["Prune for airflow", "Water at the base", "Clear fallen fruit and leaves"]
+  },
+  "pepper bell bacterial spot": {
+    "cause": "bacterial",
+    "severity": "act_soon",
+    "summary": "Xanthomonas causing small water-soaked spots that turn brown with yellow halos.",
+    "do_now": ["Remove infected leaves", "Avoid handling plants when wet"],
+    "organic": ["Copper plus mancozeb sprays", "Space plants for airflow"],
+    "chemical": ["Copper-based bactericide per label"],
+    "prevent": ["Use certified clean seed", "Rotate 2-3 years", "Avoid overhead watering"]
+  },
+  "pepper bell healthy": {
+    "cause": "none",
+    "severity": "healthy",
+    "summary": "This pepper foliage looks healthy.",
+    "do_now": [],
+    "organic": [],
+    "chemical": [],
+    "prevent": ["Water at the base", "Rotate crops", "Mulch to reduce soil splash"]
+  },
+  "potato early blight": {
+    "cause": "fungal",
+    "severity": "act_soon",
+    "summary": "Alternaria solani causing concentric-ring 'target' spots on older leaves.",
+    "do_now": ["Remove affected lower leaves", "Avoid wetting foliage"],
+    "organic": ["Copper or chlorothalonil alternatives weekly", "Neem oil early"],
+    "chemical": ["Chlorothalonil or mancozeb per label"],
+    "prevent": ["Rotate crops", "Mulch to stop soil splash", "Keep plants well fed and watered"]
+  },
+  "potato late blight": {
+    "cause": "fungal",
+    "severity": "urgent",
+    "summary": "Phytophthora infestans causing fast-spreading dark water-soaked lesions; can destroy a crop in days.",
+    "do_now": ["Remove and bin infected plants immediately", "Do not compost the debris"],
+    "organic": ["Copper fungicide preventively in cool wet weather"],
+    "chemical": ["Mancozeb or chlorothalonil, or systemic products in outbreaks"],
+    "prevent": ["Plant resistant varieties", "Hill soil over tubers", "Avoid overhead irrigation", "Destroy volunteers"]
+  },
+  "potato healthy": {
+    "cause": "none",
+    "severity": "healthy",
+    "summary": "This potato foliage looks healthy.",
+    "do_now": [],
+    "organic": [],
+    "chemical": [],
+    "prevent": ["Rotate crops", "Hill soil over tubers", "Scout in cool, wet spells"]
+  },
+  "raspberry healthy": {
+    "cause": "none",
+    "severity": "healthy",
+    "summary": "This raspberry foliage looks healthy.",
+    "do_now": [],
+    "organic": [],
+    "chemical": [],
+    "prevent": ["Thin canes for airflow", "Remove old fruited canes", "Keep beds weed-free"]
+  },
+  "soybean healthy": {
+    "cause": "none",
+    "severity": "healthy",
+    "summary": "This soybean foliage looks healthy.",
+    "do_now": [],
+    "organic": [],
+    "chemical": [],
+    "prevent": ["Rotate crops", "Scout for pests weekly", "Maintain balanced fertility"]
+  },
+  "squash powdery mildew": {
+    "cause": "fungal",
+    "severity": "act_soon",
+    "summary": "White powdery patches on leaves and stems, spreading fast in warm, dry days with humid nights.",
+    "do_now": ["Remove the most affected leaves", "Improve spacing and airflow"],
+    "organic": ["Potassium bicarbonate or milk spray", "Neem oil weekly"],
+    "chemical": ["Sulfur or myclobutanil per label"],
+    "prevent": ["Plant resistant varieties", "Water at the base early in the day", "Avoid crowding"]
+  },
+  "strawberry leaf scorch": {
+    "cause": "fungal",
+    "severity": "monitor",
+    "summary": "Diplocarpon causing dark purple spots that merge, giving leaves a scorched look.",
+    "do_now": ["Remove infected leaves after harvest", "Improve airflow between plants"],
+    "organic": ["Copper fungicide", "Neem oil on new growth"],
+    "chemical": ["Captan or myclobutanil per label"],
+    "prevent": ["Renovate beds yearly", "Avoid overhead watering", "Space runners well"]
+  },
+  "strawberry healthy": {
+    "cause": "none",
+    "severity": "healthy",
+    "summary": "This strawberry foliage looks healthy.",
+    "do_now": [],
+    "organic": [],
+    "chemical": [],
+    "prevent": ["Mulch to keep fruit off soil", "Water at the base", "Renovate beds after harvest"]
+  },
+  "tomato bacterial spot": {
+    "cause": "bacterial",
+    "severity": "act_soon",
+    "summary": "Xanthomonas causing small dark greasy spots on leaves and scabby fruit spots.",
+    "do_now": ["Remove infected leaves", "Avoid handling plants when wet"],
+    "organic": ["Copper plus mancozeb sprays", "Improve airflow"],
+    "chemical": ["Copper bactericide per label"],
+    "prevent": ["Use clean seed", "Rotate 2-3 years", "Avoid overhead watering"]
+  },
+  "tomato early blight": {
+    "cause": "fungal",
+    "severity": "act_soon",
+    "summary": "Alternaria causing concentric brown 'target' spots on lower leaves first.",
+    "do_now": ["Remove affected lower leaves and bin them", "Avoid wetting the foliage"],
+    "organic": ["Neem oil weekly", "Copper-based fungicide"],
+    "chemical": ["Chlorothalonil or mancozeb per label"],
+    "prevent": ["Mulch to stop soil splash", "Stake for airflow", "Rotate crops yearly"]
+  },
+  "tomato late blight": {
+    "cause": "fungal",
+    "severity": "urgent",
+    "summary": "Phytophthora infestans causing large greasy gray-brown blotches; can kill plants in days.",
+    "do_now": ["Remove and bin infected plants at once", "Do not compost the debris"],
+    "organic": ["Copper fungicide preventively in cool, wet weather"],
+    "chemical": ["Chlorothalonil or mancozeb; systemic products in outbreaks"],
+    "prevent": ["Plant resistant varieties", "Space for airflow", "Avoid overhead watering"]
+  },
+  "tomato leaf mold": {
+    "cause": "fungal",
+    "severity": "act_soon",
+    "summary": "Passalora fulva causing pale yellow patches above and olive mold below leaves; common in humid greenhouses.",
+    "do_now": ["Remove affected leaves", "Increase ventilation and lower humidity"],
+    "organic": ["Copper fungicide", "Improve airflow and spacing"],
+    "chemical": ["Chlorothalonil or mancozeb per label"],
+    "prevent": ["Vent greenhouses well", "Water at the base", "Space plants and prune lower leaves"]
+  },
+  "tomato septoria leaf spot": {
+    "cause": "fungal",
+    "severity": "act_soon",
+    "summary": "Septoria causing many small circular spots with dark borders and gray centers.",
+    "do_now": ["Remove spotted lower leaves", "Avoid overhead watering"],
+    "organic": ["Copper fungicide weekly", "Neem oil early"],
+    "chemical": ["Chlorothalonil or mancozeb per label"],
+    "prevent": ["Mulch heavily", "Rotate crops", "Stake for airflow"]
+  },
+  "tomato spider mites two spotted spider mite": {
+    "cause": "pest",
+    "severity": "act_soon",
+    "summary": "Tiny mites causing fine stippling, yellowing, and webbing on leaf undersides in hot, dry spells.",
+    "do_now": ["Spray leaf undersides with a strong jet of water", "Remove badly infested leaves"],
+    "organic": ["Insecticidal soap or neem oil, repeat every 5-7 days", "Introduce predatory mites"],
+    "chemical": ["A labeled miticide (rotate modes of action)"],
+    "prevent": ["Keep plants watered (mites love drought stress)", "Raise humidity", "Avoid broad-spectrum insecticides"]
+  },
+  "tomato target spot": {
+    "cause": "fungal",
+    "severity": "act_soon",
+    "summary": "Corynespora causing brown spots with concentric rings on leaves and fruit.",
+    "do_now": ["Remove affected leaves and fruit", "Improve airflow"],
+    "organic": ["Copper fungicide", "Neem oil early"],
+    "chemical": ["Chlorothalonil or a strobilurin per label"],
+    "prevent": ["Stake and prune for airflow", "Avoid overhead watering", "Rotate crops"]
+  },
+  "tomato tomato yellow leaf curl virus": {
+    "cause": "viral",
+    "severity": "urgent",
+    "summary": "Whitefly-spread virus causing upward leaf curling, yellowing, and stunted growth. No cure.",
+    "do_now": ["Remove and bin infected plants to protect others", "Control whiteflies immediately"],
+    "organic": ["Neem oil and yellow sticky traps for whiteflies", "Reflective mulch to deter whiteflies"],
+    "chemical": ["Approved insecticides for whitefly control per local guidance"],
+    "prevent": ["Plant resistant varieties", "Use insect netting", "Remove weeds that host whiteflies"]
+  },
+  "tomato tomato mosaic virus": {
+    "cause": "viral",
+    "severity": "urgent",
+    "summary": "Highly contagious virus causing mottled light-and-dark leaves and distorted growth. No cure.",
+    "do_now": ["Remove and bin infected plants", "Wash hands and tools with soap after handling"],
+    "organic": ["No spray cures a virus; focus on sanitation"],
+    "chemical": ["None; manage by removal and hygiene"],
+    "prevent": ["Use certified clean seed", "Disinfect tools", "Do not use tobacco near plants", "Wash hands before handling"]
+  },
+  "tomato healthy": {
+    "cause": "none",
+    "severity": "healthy",
+    "summary": "This tomato foliage looks healthy.",
+    "do_now": [],
+    "organic": [],
+    "chemical": [],
+    "prevent": ["Mulch to reduce soil splash", "Water at the base", "Stake and prune for airflow"]
+  }
+}
