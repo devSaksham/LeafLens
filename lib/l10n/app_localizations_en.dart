@@ -9,24 +9,6 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get welcomeHeadline => 'Heal your plants,\none leaf at a time.';
-
-  @override
-  String get welcomeTagline => 'Snap a leaf and spot disease in seconds.';
-
-  @override
-  String get continueWithGoogle => 'CONTINUE WITH GOOGLE';
-
-  @override
-  String get continueAsGuest => 'CONTINUE AS GUEST';
-
-  @override
-  String get signingIn => 'SIGNING IN…';
-
-  @override
-  String get googleSignInFailed => 'Google sign-in failed. Try again.';
-
-  @override
   String get selectLanguage => 'Select language';
 
   @override
@@ -80,31 +62,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get askAssistant => 'ASK ASSISTANT';
-
-  @override
-  String get assistantTitle => 'Assistant';
-
-  @override
-  String get assistantGreeting =>
-      'Hi! I\'m the LeafLens assistant. Ask me anything about plant care.';
-
-  @override
-  String assistantGreetingDisease(String disease) {
-    return 'I can help with $disease. Ask about symptoms, causes, or treatment.';
-  }
-
-  @override
-  String get askQuestion => 'Ask a question';
-
-  @override
-  String get assistantError =>
-      'Sorry, I could not reach the assistant. Please try again.';
-
-  @override
-  String get getStarted => 'GET STARTED';
-
-  @override
   String get recentScans => 'Recent scans';
 
   @override
@@ -135,11 +92,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get preventLabel => 'Prevent';
 
   @override
-  String get regionalNote => 'Regional note';
-
-  @override
-  String get loadingRegionalNote => 'Getting advice for your area…';
-
-  @override
   String get noTreatment => 'No treatment information available yet.';
+
+  @override
+  String get aiFocusTitle => 'AI FOCUS AREA';
+
+  @override
+  String get focusComputing => 'Mapping where the AI looked...';
+
+  @override
+  String get focusShow => 'SHOW AI FOCUS';
+
+  @override
+  String get focusHide => 'SHOW ORIGINAL';
+
+  @override
+  String get focusCaption =>
+      'The highlighted regions are the areas that most influenced the prediction.';
 }

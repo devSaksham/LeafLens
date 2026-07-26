@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'treatment.dart';
 
@@ -19,21 +18,9 @@ class TreatmentRepository {
     return _bundled!;
   }
 
-  /// Looks up treatment for the given raw model label. Tries the Supabase
-  /// `treatments` table first (so cures can be updated without an app release)
-  /// and falls back to the bundled JSON when the table is absent or offline.
+  /// Looks up treatment for the given raw model label in the bundled
+  /// knowledge base. Loaded once, cached, and works entirely offline.
   Future<Treatment?> forLabel(String label) async {
-    try {
-      final data = await Supabase.instance.client
-          .from('treatments')
-          .select()
-          .eq('label', label)
-          .maybeSingle();
-      if (data != null) return Treatment.fromJson(data);
-    } catch (_) {
-      // Table missing / offline / RLS — fall through to bundled data.
-    }
-
     final Map<String, dynamic> bundled = await _loadBundled();
     final entry = bundled[label];
     if (entry is Map<String, dynamic>) return Treatment.fromJson(entry);

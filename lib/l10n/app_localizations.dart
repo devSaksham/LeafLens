@@ -98,42 +98,6 @@ abstract class AppLocalizations {
     Locale('hi'),
   ];
 
-  /// No description provided for @welcomeHeadline.
-  ///
-  /// In en, this message translates to:
-  /// **'Heal your plants,\none leaf at a time.'**
-  String get welcomeHeadline;
-
-  /// No description provided for @welcomeTagline.
-  ///
-  /// In en, this message translates to:
-  /// **'Snap a leaf and spot disease in seconds.'**
-  String get welcomeTagline;
-
-  /// No description provided for @continueWithGoogle.
-  ///
-  /// In en, this message translates to:
-  /// **'CONTINUE WITH GOOGLE'**
-  String get continueWithGoogle;
-
-  /// No description provided for @continueAsGuest.
-  ///
-  /// In en, this message translates to:
-  /// **'CONTINUE AS GUEST'**
-  String get continueAsGuest;
-
-  /// No description provided for @signingIn.
-  ///
-  /// In en, this message translates to:
-  /// **'SIGNING IN…'**
-  String get signingIn;
-
-  /// No description provided for @googleSignInFailed.
-  ///
-  /// In en, this message translates to:
-  /// **'Google sign-in failed. Try again.'**
-  String get googleSignInFailed;
-
   /// No description provided for @selectLanguage.
   ///
   /// In en, this message translates to:
@@ -230,48 +194,6 @@ abstract class AppLocalizations {
   /// **'Confidence {value}'**
   String confidence(String value);
 
-  /// No description provided for @askAssistant.
-  ///
-  /// In en, this message translates to:
-  /// **'ASK ASSISTANT'**
-  String get askAssistant;
-
-  /// No description provided for @assistantTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Assistant'**
-  String get assistantTitle;
-
-  /// No description provided for @assistantGreeting.
-  ///
-  /// In en, this message translates to:
-  /// **'Hi! I\'m the LeafLens assistant. Ask me anything about plant care.'**
-  String get assistantGreeting;
-
-  /// No description provided for @assistantGreetingDisease.
-  ///
-  /// In en, this message translates to:
-  /// **'I can help with {disease}. Ask about symptoms, causes, or treatment.'**
-  String assistantGreetingDisease(String disease);
-
-  /// No description provided for @askQuestion.
-  ///
-  /// In en, this message translates to:
-  /// **'Ask a question'**
-  String get askQuestion;
-
-  /// No description provided for @assistantError.
-  ///
-  /// In en, this message translates to:
-  /// **'Sorry, I could not reach the assistant. Please try again.'**
-  String get assistantError;
-
-  /// No description provided for @getStarted.
-  ///
-  /// In en, this message translates to:
-  /// **'GET STARTED'**
-  String get getStarted;
-
   /// No description provided for @recentScans.
   ///
   /// In en, this message translates to:
@@ -332,23 +254,41 @@ abstract class AppLocalizations {
   /// **'Prevent'**
   String get preventLabel;
 
-  /// No description provided for @regionalNote.
-  ///
-  /// In en, this message translates to:
-  /// **'Regional note'**
-  String get regionalNote;
-
-  /// No description provided for @loadingRegionalNote.
-  ///
-  /// In en, this message translates to:
-  /// **'Getting advice for your area…'**
-  String get loadingRegionalNote;
-
   /// No description provided for @noTreatment.
   ///
   /// In en, this message translates to:
   /// **'No treatment information available yet.'**
   String get noTreatment;
+
+  /// No description provided for @aiFocusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'AI FOCUS AREA'**
+  String get aiFocusTitle;
+
+  /// No description provided for @focusComputing.
+  ///
+  /// In en, this message translates to:
+  /// **'Mapping where the AI looked...'**
+  String get focusComputing;
+
+  /// No description provided for @focusShow.
+  ///
+  /// In en, this message translates to:
+  /// **'SHOW AI FOCUS'**
+  String get focusShow;
+
+  /// No description provided for @focusHide.
+  ///
+  /// In en, this message translates to:
+  /// **'SHOW ORIGINAL'**
+  String get focusHide;
+
+  /// No description provided for @focusCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'The highlighted regions are the areas that most influenced the prediction.'**
+  String get focusCaption;
 }
 
 class _AppLocalizationsDelegate

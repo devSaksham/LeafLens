@@ -8,62 +8,31 @@ import 'package:flutter/painting.dart';
 class AppColors {
   AppColors._();
 
-  // ---------------------------------------------------------------------------
-  // Light palette
-  // ---------------------------------------------------------------------------
+  static const Color primary = Color(0xFF5E6AD2);
+  static const Color secondary = Color(0xFF62666D);
+  static const Color tertiary = Color(0xFF3FA45B);
+  static const Color neutral = Color(0xFFF7F8F8);
+  static const Color surface = Color(0xFFFFFFFF);
+  static const Color onSurface = Color(0xFF08090A);
+  static const Color error = Color(0xFFD0454C);
+  static const Color primary60 = Color(0xFF8A8F98);
+  static const Color primary80 = Color(0xFF4A52B0);
+  static const Color accent = Color(0xFF5E6AD2);
+  static const Color borderLight = Color(0xFFE5E5E6);
+  static const Color borderStandard = Color(0xFFD0D6E0);
 
-  /// Deep forest-ink. Headlines, navigation, borders, key contrast.
-  static const Color primary = Color(0xFF1D2B1F);
+  static const Color darkBackground = Color(0xFF08090A);
+  static const Color darkSurface = Color(0xFF0F1011);
+  static const Color darkSurfaceElevated = Color(0xFF121414);
+  static const Color darkNeutral = Color(0xFF101112);
+  static const Color onDark = Color(0xFFF7F8F8);
+  static const Color darkSecondary = Color(0xFF8A8F98);
+  static const Color darkError = Color(0xFFE5646B);
+  static const Color darkBorder = Color(0x0DFFFFFF);
+  static const Color darkBorderHover = Color(0x14FFFFFF);
 
-  /// Muted sage-gray. Supportive text and softer UI moments.
-  static const Color secondary = Color(0xFF6D7B6F);
-
-  /// Lively lime. Primary calls to action and highlights.
-  static const Color tertiary = Color(0xFFBFEA4B);
-
-  /// Warm cream. Default page background.
-  static const Color neutral = Color(0xFFF7F0E6);
-
-  /// Off-white. Elevated cards and content areas.
-  static const Color surface = Color(0xFFFFFDF8);
-
-  /// Default readable text color on light backgrounds.
-  static const Color onSurface = Color(0xFF1D2B1F);
-
-  /// Restrained alert red. Validation and destructive states.
-  static const Color error = Color(0xFFC84D4D);
-
-  /// Lifted primary tone. Hover and nuanced borders/text.
-  static const Color primary60 = Color(0xFF4E5B50);
-
-  /// Deepened primary tone. Pressed and heavier contrast.
-  static const Color primary80 = Color(0xFF2D3A30);
-
-  /// Signature highlight. Mirrors [tertiary]; use sparingly.
-  static const Color accent = Color(0xFFBFEA4B);
-
-  // ---------------------------------------------------------------------------
-  // Dark palette (derived from the same forest / cream / lime language)
-  // ---------------------------------------------------------------------------
-
-  /// Near-black green. Default dark background.
-  static const Color darkBackground = Color(0xFF12180F);
-
-  /// Forest ink. Default dark surface.
-  static const Color darkSurface = Color(0xFF1D2B1F);
-
-  /// Lifted forest. Elevated dark cards and content areas.
-  static const Color darkSurfaceElevated = Color(0xFF2D3A30);
-
-  /// Muted dark card fill, analogue of [neutral] for dark mode.
-  static const Color darkNeutral = Color(0xFF232E24);
-
-  /// Cream. Default readable text color on dark backgrounds.
-  static const Color onDark = Color(0xFFF7F0E6);
-
-  /// Lightened sage. Supportive text on dark backgrounds.
-  static const Color darkSecondary = Color(0xFF9CAA92);
-
-  /// Lightened alert red for dark backgrounds.
-  static const Color darkError = Color(0xFFE06A6A);
+  static const Color transparent = Color(0x00000000);
+  static const Color shadowOuter = Color(0x14000000);
+  static const Color shadowMid = Color(0x0A000000);
+  static const Color shadowInner = Color(0x12000000);
 }

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../sessions/scan_session.dart';
 import '../theme/app_spacing.dart';
-import 'assistant_screen.dart';
 import 'treatment_screen.dart';
 
 class SessionDetailScreen extends StatelessWidget {
@@ -56,15 +55,6 @@ class SessionDetailScreen extends StatelessWidget {
                 ),
               ),
               child: Text(l10n.viewTreatment),
-            ),
-            const SizedBox(height: AppSpacing.sm),
-            OutlinedButton(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => AssistantScreen(disease: session.displayName),
-                ),
-              ),
-              child: Text(l10n.askAssistant),
             ),
           ],
         ],

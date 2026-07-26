@@ -1,11 +1,5 @@
 {
   "@@locale": "en",
-  "welcomeHeadline": "Heal your plants,\none leaf at a time.",
-  "welcomeTagline": "Snap a leaf and spot disease in seconds.",
-  "continueWithGoogle": "CONTINUE WITH GOOGLE",
-  "continueAsGuest": "CONTINUE AS GUEST",
-  "signingIn": "SIGNING IN…",
-  "googleSignInFailed": "Google sign-in failed. Try again.",
   "selectLanguage": "Select language",
   "homeCardTitle": "Check your plant's health",
   "homeCardBody": "Take or select a photo of a plant to detect the disease and get guidance.",
@@ -23,18 +17,12 @@
   "diseaseChip": "DISEASE",
   "confidence": "Confidence {value}",
   "@confidence": {
-    "placeholders": { "value": { "type": "String" } }
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
   },
-  "askAssistant": "ASK ASSISTANT",
-  "assistantTitle": "Assistant",
-  "assistantGreeting": "Hi! I'm the LeafLens assistant. Ask me anything about plant care.",
-  "assistantGreetingDisease": "I can help with {disease}. Ask about symptoms, causes, or treatment.",
-  "@assistantGreetingDisease": {
-    "placeholders": { "disease": { "type": "String" } }
-  },
-  "askQuestion": "Ask a question",
-  "assistantError": "Sorry, I could not reach the assistant. Please try again.",
-  "getStarted": "GET STARTED",
   "recentScans": "Recent scans",
   "noScansYet": "Your scans will appear here.",
   "viewTreatment": "VIEW TREATMENT",
@@ -45,7 +33,10 @@
   "organicLabel": "Organic",
   "chemicalLabel": "Chemical",
   "preventLabel": "Prevent",
-  "regionalNote": "Regional note",
-  "loadingRegionalNote": "Getting advice for your area…",
-  "noTreatment": "No treatment information available yet."
+  "noTreatment": "No treatment information available yet.",
+  "aiFocusTitle": "AI FOCUS AREA",
+  "focusComputing": "Mapping where the AI looked...",
+  "focusShow": "SHOW AI FOCUS",
+  "focusHide": "SHOW ORIGINAL",
+  "focusCaption": "The highlighted regions are the areas that most influenced the prediction."
 }

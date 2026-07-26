@@ -5,6 +5,7 @@ import '../theme/feather_icons.dart';
 import 'package:intl/intl.dart';
 
 import '../l10n/app_localizations.dart';
+import '../l10n/locale_controller.dart';
 import '../sessions/scan_session.dart';
 import '../sessions/session_store.dart';
 import '../theme/app_spacing.dart';
@@ -47,13 +48,60 @@ class _HomeScreenState extends State<HomeScreen> {
     _load();
   }
 
+  void _pickLanguage() {
+    final AppLocalizations l10n = AppLocalizations.of(context);
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (context) {
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(AppSpacing.md),
+                child: Text(
+                  l10n.selectLanguage,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+              ),
+              ListTile(
+                title: const Text('English'),
+                onTap: () {
+                  LocaleController.setLocale(const Locale('en'));
+                  Navigator.of(context).pop();
+                },
+              ),
+              ListTile(
+                title: const Text('हिंदी'),
+                onTap: () {
+                  LocaleController.setLocale(const Locale('hi'));
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final AppLocalizations l10n = AppLocalizations.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('LeafLens')),
+      appBar: AppBar(
+        title: const Text('LeafLens'),
+        actions: [
+          IconButton(
+            onPressed: _pickLanguage,
+            icon: Icon(FeatherIcons.globe,
+                color: theme.colorScheme.onSurface),
+            tooltip: l10n.selectLanguage,
+          ),
+        ],
+      ),
       body: ListView(
         padding: const EdgeInsets.all(AppSpacing.gutter),
         children: [
@@ -103,7 +151,7 @@ class _FeatureCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: theme.cardColor,
         borderRadius: AppRadius.lgRadius,
-        border: Border.all(color: theme.colorScheme.onSurface, width: 2),
+        border: Border.all(color: theme.dividerColor, width: 1),
         boxShadow: AppShadows.hard,
       ),
       padding: const EdgeInsets.all(AppSpacing.md),
@@ -147,7 +195,7 @@ class _SessionTile extends StatelessWidget {
         decoration: BoxDecoration(
           color: theme.cardColor,
           borderRadius: AppRadius.lgRadius,
-          border: Border.all(color: theme.colorScheme.onSurface, width: 2),
+          border: Border.all(color: theme.dividerColor, width: 1),
         ),
         padding: const EdgeInsets.all(AppSpacing.sm),
         child: Row(

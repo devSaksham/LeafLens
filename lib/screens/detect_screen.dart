@@ -7,10 +7,11 @@ import 'package:image_picker/image_picker.dart';
 import '../l10n/app_localizations.dart';
 import '../ml/diagnosis.dart';
 import '../ml/plant_disease_classifier.dart';
+import '../ml/saliency_map.dart';
 import '../sessions/session_store.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_theme.dart';
-import 'assistant_screen.dart';
+import '../widgets/saliency_overlay.dart';
 import 'treatment_screen.dart';
 
 class DetectScreen extends StatefulWidget {
@@ -25,7 +26,10 @@ class _DetectScreenState extends State<DetectScreen> {
 
   Uint8List? _imageBytes;
   Diagnosis? _result;
+  SaliencyMap? _saliency;
   bool _analyzing = false;
+  bool _explaining = false;
+  bool _showFocus = true;
   bool _hasRun = false;
   bool _failed = false;
 
@@ -37,8 +41,11 @@ class _DetectScreenState extends State<DetectScreen> {
       setState(() {
         _imageBytes = bytes;
         _result = null;
+        _saliency = null;
         _hasRun = false;
         _analyzing = true;
+        _explaining = false;
+        _showFocus = true;
         _failed = false;
       });
       final Diagnosis? diagnosis =
@@ -51,15 +58,32 @@ class _DetectScreenState extends State<DetectScreen> {
         _result = diagnosis;
         _hasRun = true;
         _analyzing = false;
+        _explaining = diagnosis != null && !diagnosis.isBackground;
       });
+      if (_explaining) await _explain(bytes, diagnosis!);
     } catch (e) {
       if (!mounted) return;
       setState(() {
         _analyzing = false;
+        _explaining = false;
         _hasRun = true;
         _failed = true;
       });
     }
+  }
+
+  Future<void> _explain(Uint8List bytes, Diagnosis diagnosis) async {
+    SaliencyMap? map;
+    try {
+      map = await PlantDiseaseClassifier.instance.saliencyFor(bytes, diagnosis);
+    } catch (e) {
+      map = null;
+    }
+    if (!mounted) return;
+    setState(() {
+      _saliency = map;
+      _explaining = false;
+    });
   }
 
   @override
@@ -75,7 +99,19 @@ class _DetectScreenState extends State<DetectScreen> {
           const SizedBox(height: AppSpacing.xs),
           Text(l10n.detectSubtitle, style: theme.textTheme.bodyMedium),
           const SizedBox(height: AppSpacing.lg),
-          _ImageFrame(bytes: _imageBytes, analyzing: _analyzing),
+          _ImageFrame(
+            bytes: _imageBytes,
+            analyzing: _analyzing,
+            saliency: _showFocus ? _saliency : null,
+          ),
+          if (_explaining || _saliency != null) ...[
+            const SizedBox(height: AppSpacing.md),
+            _FocusPanel(
+              busy: _explaining,
+              showingFocus: _showFocus,
+              onToggle: () => setState(() => _showFocus = !_showFocus),
+            ),
+          ],
           const SizedBox(height: AppSpacing.lg),
           Row(
             children: [
@@ -107,10 +143,15 @@ class _DetectScreenState extends State<DetectScreen> {
 }
 
 class _ImageFrame extends StatelessWidget {
-  const _ImageFrame({required this.bytes, required this.analyzing});
+  const _ImageFrame({
+    required this.bytes,
+    required this.analyzing,
+    this.saliency,
+  });
 
   final Uint8List? bytes;
   final bool analyzing;
+  final SaliencyMap? saliency;
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +162,7 @@ class _ImageFrame extends StatelessWidget {
         decoration: BoxDecoration(
           color: theme.cardColor,
           borderRadius: AppRadius.lgRadius,
-          border: Border.all(color: theme.colorScheme.onSurface, width: 2),
+          border: Border.all(color: theme.dividerColor, width: 1),
         ),
         clipBehavior: Clip.antiAlias,
         child: analyzing
@@ -136,8 +177,66 @@ class _ImageFrame extends StatelessWidget {
                       color: theme.colorScheme.secondary,
                     ),
                   )
-                : Image.memory(bytes!, fit: BoxFit.cover),
+                : Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.memory(bytes!, fit: BoxFit.cover),
+                      if (saliency != null) SaliencyOverlay(map: saliency!),
+                    ],
+                  ),
       ),
+    );
+  }
+}
+
+class _FocusPanel extends StatelessWidget {
+  const _FocusPanel({
+    required this.busy,
+    required this.showingFocus,
+    required this.onToggle,
+  });
+
+  final bool busy;
+  final bool showingFocus;
+  final VoidCallback onToggle;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final AppLocalizations l10n = AppLocalizations.of(context);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(l10n.aiFocusTitle, style: theme.textTheme.labelLarge),
+        const SizedBox(height: AppSpacing.xs),
+        if (busy)
+          Row(
+            children: [
+              SizedBox(
+                width: 14,
+                height: 14,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: theme.colorScheme.secondary,
+                ),
+              ),
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: Text(l10n.focusComputing,
+                    style: theme.textTheme.bodySmall),
+              ),
+            ],
+          )
+        else ...[
+          Text(l10n.focusCaption, style: theme.textTheme.bodySmall),
+          const SizedBox(height: AppSpacing.sm),
+          OutlinedButton(
+            onPressed: onToggle,
+            child: Text(showingFocus ? l10n.focusHide : l10n.focusShow),
+          ),
+        ],
+      ],
     );
   }
 }
@@ -195,15 +294,6 @@ class _ResultCard extends StatelessWidget {
               ),
               child: Text(l10n.viewTreatment),
             ),
-            const SizedBox(height: AppSpacing.sm),
-            OutlinedButton(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => AssistantScreen(disease: r.displayName),
-                ),
-              ),
-              child: Text(l10n.askAssistant),
-            ),
           ],
         ],
       ),
@@ -222,8 +312,8 @@ class _ResultCard extends StatelessWidget {
         color: theme.cardColor,
         borderRadius: AppRadius.lgRadius,
         border: Border.all(
-          color: accent ?? theme.colorScheme.onSurface,
-          width: 2,
+          color: accent ?? theme.dividerColor,
+          width: 1,
         ),
         boxShadow: AppShadows.hard,
       ),

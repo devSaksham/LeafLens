@@ -1,81 +1,41 @@
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// The LeafLens type scale.
-///
-/// Fraunces is the expressive display serif (hero and section headlines).
-/// Inter handles all functional communication (body, labels, controls).
-///
-/// Styles intentionally carry no color; [AppTheme] applies the scheme color
-/// so the same scale reads correctly in both light and dark modes.
+/// The Inter type scale. Hierarchy comes from weight and size, never color.
 class AppTypography {
   AppTypography._();
 
-  static TextStyle get headlineDisplay => GoogleFonts.fraunces(
-        fontSize: 74,
-        fontWeight: FontWeight.w700,
-        height: 89 / 74,
-        letterSpacing: -1.85,
-      );
+  static const FontWeight _regular = FontWeight.w400;
+  static const FontWeight _medium = FontWeight.w500;
+  static const FontWeight _semibold = FontWeight.w600;
 
-  static TextStyle get headlineLg => GoogleFonts.fraunces(
-        fontSize: 52,
-        fontWeight: FontWeight.w700,
-        height: 62 / 52,
-        letterSpacing: -1.30,
-      );
+  static TextStyle get headlineDisplay => GoogleFonts.inter(
+        fontSize: 48, fontWeight: _medium, height: 52 / 48, letterSpacing: -1.0);
 
-  static TextStyle get headlineMd => GoogleFonts.fraunces(
-        fontSize: 37,
-        fontWeight: FontWeight.w600,
-        height: 44 / 37,
-        letterSpacing: -0.39,
-      );
+  static TextStyle get headlineLg => GoogleFonts.inter(
+        fontSize: 32, fontWeight: _medium, height: 36 / 32, letterSpacing: -0.6);
+
+  static TextStyle get headlineMd => GoogleFonts.inter(
+        fontSize: 24, fontWeight: _semibold, height: 30 / 24, letterSpacing: -0.4);
 
   static TextStyle get headlineSm => GoogleFonts.inter(
-        fontSize: 26,
-        fontWeight: FontWeight.w600,
-        height: 31 / 26,
-      );
+        fontSize: 20, fontWeight: _semibold, height: 26.6 / 20);
 
   static TextStyle get bodyLg => GoogleFonts.inter(
-        fontSize: 18,
-        fontWeight: FontWeight.w400,
-        height: 30 / 18,
-        letterSpacing: -0.09,
-      );
+        fontSize: 16, fontWeight: _regular, height: 24 / 16);
 
   static TextStyle get bodyMd => GoogleFonts.inter(
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-        height: 26 / 16,
-        letterSpacing: -0.05,
-      );
+        fontSize: 15, fontWeight: _regular, height: 24 / 15);
 
   static TextStyle get bodySm => GoogleFonts.inter(
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-        height: 22 / 14,
-      );
+        fontSize: 13, fontWeight: _regular, height: 19.5 / 13);
 
   static TextStyle get labelLg => GoogleFonts.inter(
-        fontSize: 12,
-        fontWeight: FontWeight.w700,
-        height: 16 / 12,
-        letterSpacing: 0.96,
-      );
+        fontSize: 13, fontWeight: _medium, height: 19.5 / 13);
 
   static TextStyle get labelMd => GoogleFonts.inter(
-        fontSize: 11,
-        fontWeight: FontWeight.w700,
-        height: 14 / 11,
-        letterSpacing: 0.88,
-      );
+        fontSize: 13, fontWeight: _regular, height: 19.5 / 13);
 
   static TextStyle get labelSm => GoogleFonts.inter(
-        fontSize: 10,
-        fontWeight: FontWeight.w700,
-        height: 12 / 10,
-        letterSpacing: 1.0,
-      );
+        fontSize: 12, fontWeight: _regular, height: 18 / 12);
 }
